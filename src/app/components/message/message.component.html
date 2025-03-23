@@ -1,0 +1,6 @@
+<div class="message">
+  <strong>{{ message.author }}</strong>
+  <span>{{ message.timestamp | date: 'HH:mm:ss' }}</span>
+  <p>{{ message.text }}</p>
+  <button (click)="deleteMessage()">Удалить</button>
+</div>

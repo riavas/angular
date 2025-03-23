@@ -1,0 +1,18 @@
+<div class="chat">
+  <div class="input-area">
+    <input
+      [(ngModel)]="newMessage"
+      placeholder="Введите сообщение"
+      (keyup.enter)="sendMessage()"
+    />
+    <button (click)="sendMessage()">Отправить</button>
+  </div>
+  <div class="messages">
+    <div *ngFor="let message of messages; let i = index" class="message-container">
+      <app-message
+        [message]="message"
+        (delete)="deleteMessage(i)"
+      ></app-message>
+    </div>
+  </div>
+</div>

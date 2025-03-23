@@ -1,0 +1,17 @@
+<div class="header">
+    <h1>Добро пожаловать в чат</h1>
+    <div *ngIf="!username" class="username-input">
+      <input
+        [(ngModel)]="inputUsername"
+        placeholder="Введите ваш никнейм"
+      />
+      <button (click)="setUsername()">Сохранить</button>
+    </div>
+    <div *ngIf="username" class="username-display">
+      <p>Ваш никнейм: {{ username }}</p>
+      <button (click)="editUsername()">Изменить</button>
+    </div>
+  </div>
+  
+  <!-- Убедитесь, что компонент чата подключен -->
+  <app-chat></app-chat>
