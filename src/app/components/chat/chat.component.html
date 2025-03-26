@@ -1,5 +1,9 @@
-<div class="chat">
-  <div class="input-area">
+<div class="chat-container">
+  <h1>Добро пожаловать в чат</h1>
+  
+  <app-username></app-username>
+
+  <div class="message-input">
     <input
       [(ngModel)]="newMessage"
       placeholder="Введите сообщение"
@@ -7,12 +11,16 @@
     />
     <button (click)="sendMessage()">Отправить</button>
   </div>
+
   <div class="messages">
-    <div *ngFor="let message of messages; let i = index" class="message-container">
-      <app-message
-        [message]="message"
-        (delete)="deleteMessage(i)"
-      ></app-message>
-    </div>
+    @for (message of chatService.messages$ | async; track message.timestamp) {
+      <div class="message">
+        <div class="message-header">
+          <span class="author">{{message.author}}</span>
+          <span class="timestamp">{{message.timestamp | date:'HH:mm'}}</span>
+        </div>
+        <div class="message-text">{{message.text}}</div>
+      </div>
+    }
   </div>
 </div>

@@ -1,28 +1,24 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { RouterOutlet } from '@angular/router';
 import { ChatComponent } from './components/chat/chat.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule, ChatComponent], // Импорт ChatComponent
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-})
-export class AppComponent {
-  inputUsername = '';
-  username = '';
-
-  setUsername() {
-    if (this.inputUsername) {
-      this.username = this.inputUsername;
-      localStorage.setItem('chat_username', this.username);
+  imports: [CommonModule, RouterOutlet, ChatComponent],
+  template: `
+    <div class="app-container">
+      <router-outlet></router-outlet>
+      <app-chat></app-chat>
+    </div>
+  `,
+  styles: [`
+    .app-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
     }
-  }
-
-  editUsername() {
-    this.username = '';
-    localStorage.removeItem('chat_username');
-  }
-}
+  `]
+})
+export class AppComponent {}

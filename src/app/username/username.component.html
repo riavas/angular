@@ -1,1 +1,10 @@
-<p>username works!</p>
+<div class="username-container">
+    <div class="username-input">
+      <input
+        [(ngModel)]="inputUsername"
+        placeholder="Введите ваш никнейм"
+        (keyup.enter)="setUsername()"
+      />
+      <button (click)="setUsername()">Сохранить</button>
+    </div>
+  </div>

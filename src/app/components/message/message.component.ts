@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Message } from '../../services/chat.service';
+import { Message } from '../../models/message.model';
 
 @Component({
   selector: 'app-message',
@@ -11,7 +11,7 @@ import { Message } from '../../services/chat.service';
 })
 export class MessageComponent {
   @Input() message!: Message; // Входное свойство для сообщения
-  @Output() delete = new EventEmitter<void>(); // Выходное событие для удаления
+  @Output() delete = new EventEmitter<void>();
 
   deleteMessage() {
     this.delete.emit(); // Вызываем событие удаления
